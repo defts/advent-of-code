@@ -28,3 +28,11 @@ func StringToIntArray(input string) []int {
 	}
 	return intArray
 }
+
+func MustParseInt(input string) int {
+	num, err := strconv.Atoi(input)
+	if err != nil {
+		panic(err)
+	}
+	return num
+}
