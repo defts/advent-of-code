@@ -9,34 +9,6 @@ import (
 	"github.com/samber/lo"
 )
 
-func groupLines(lines []string) [][]string {
-	i := 0
-	var res [][]string
-	var row []string
-	for {
-		row = append(row, lines[i])
-		i++
-		if i >= len(lines) {
-			res = append(res, row)
-			break
-		}
-		for ; i < len(lines); i++ {
-			if lines[i] == "" {
-				break
-			} else {
-				row = append(row, lines[i])
-			}
-		}
-		res = append(res, row)
-		row = nil
-		i++
-		if i >= len(lines) {
-			break
-		}
-	}
-	return res
-}
-
 var seeds = []int{}
 var seedToSoil = [][]int{}
 var soilToFertilizer = [][]int{}
@@ -50,7 +22,7 @@ func loadFile(f string) {
 	file, _ := os.Open(f)
 	buff := bufio.NewReader(file)
 	lines := utils.ReaderToLines(buff)
-	groups := groupLines(lines)
+	groups := utils.GroupLines(lines)
 
 	seedTxt := strings.Split(groups[0][0], ":")[1]
 	seeds = utils.StringToIntArray(seedTxt)

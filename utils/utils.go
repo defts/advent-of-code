@@ -36,3 +36,31 @@ func MustParseInt(input string) int {
 	}
 	return num
 }
+
+func GroupLines(lines []string) [][]string {
+	i := 0
+	var res [][]string
+	var row []string
+	for {
+		row = append(row, lines[i])
+		i++
+		if i >= len(lines) {
+			res = append(res, row)
+			break
+		}
+		for ; i < len(lines); i++ {
+			if lines[i] == "" {
+				break
+			} else {
+				row = append(row, lines[i])
+			}
+		}
+		res = append(res, row)
+		row = nil
+		i++
+		if i >= len(lines) {
+			break
+		}
+	}
+	return res
+}
