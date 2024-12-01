@@ -1,5 +1,7 @@
 package utils
 
+import "math"
+
 type Position struct {
 	Row int
 	Col int
@@ -29,4 +31,8 @@ func (p Position) Move(direction Direction, moves int) Position {
 	}
 
 	return p
+}
+
+func (p Position) Manhattan(p2 Position) int {
+	return int(math.Abs(float64(p.Row-p2.Row)) + math.Abs(float64(p.Col-p2.Col)))
 }
