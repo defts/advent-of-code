@@ -4,11 +4,24 @@ package utils
 type Direction int
 
 const (
-	Up    Direction = 0
-	Right Direction = 1
-	Down  Direction = 2
-	Left  Direction = 3
+	NotSet Direction = iota
+	Up
+	UpRight
+	Right
+	DownRight
+	Down
+	DownLeft
+	Left
+	UpLeft
 )
+
+func (d Direction) String() string {
+	return [...]string{"NotSet", "Up", "UpRight", "Right", "DownRight", "Down", "DownLeft", "Left", "UpLeft"}[d]
+}
+
+func GetAllDirections() []Direction {
+	return []Direction{Up, UpRight, Right, DownRight, Down, DownLeft, Left, UpLeft}
+}
 
 func (d Direction) Turn(turn Direction) Direction {
 	if turn != Left && turn != Right {

@@ -22,12 +22,20 @@ func (p Position) Move(direction Direction, moves int) Position {
 	switch direction {
 	case Up:
 		return p.Delta(-moves, 0)
+	case UpRight:
+		return p.Delta(-moves, moves)
 	case Right:
 		return p.Delta(0, moves)
+	case DownRight:
+		return p.Delta(moves, moves)
 	case Down:
 		return p.Delta(moves, 0)
+	case DownLeft:
+		return p.Delta(moves, -moves)
 	case Left:
 		return p.Delta(0, -moves)
+	case UpLeft:
+		return p.Delta(-moves, -moves)
 	}
 
 	return p
