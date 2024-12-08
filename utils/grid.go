@@ -22,5 +22,6 @@ func NewGrid[T any](nodes [][]T) Grid[T] {
 }
 
 func (g Grid[T]) PositionInBounds(p Position) bool {
-	return p.Row >= 0 && p.Col >= 0 && p.Row < len(g.Nodes) && p.Col < len(g.Nodes)
+	_, ok := g.Nodes[p]
+	return ok
 }

@@ -41,6 +41,14 @@ func (p Position) Move(direction Direction, moves int) Position {
 	return p
 }
 
+func (p Position) RowDiff(p2 Position) int {
+	return p.Row - p2.Row
+}
+
+func (p Position) ColDiff(p2 Position) int {
+	return p.Col - p2.Col
+}
+
 func (p Position) Manhattan(p2 Position) int {
 	return int(math.Abs(float64(p.Row-p2.Row)) + math.Abs(float64(p.Col-p2.Col)))
 }
