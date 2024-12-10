@@ -23,6 +23,10 @@ func GetAllDirections() []Direction {
 	return []Direction{Up, UpRight, Right, DownRight, Down, DownLeft, Left, UpLeft}
 }
 
+func GetAllCartesianDirection() []Direction {
+	return []Direction{Up, Right, Down, Left}
+}
+
 func (d Direction) Turn(turn Direction) Direction {
 	if turn != Left && turn != Right {
 		panic("should be left or right")
